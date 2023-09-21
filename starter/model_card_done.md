@@ -23,7 +23,7 @@ It has been cleaned for invalid records.
 This has been performed with the Census Income Data Set.
 
 ## Metrics
-Calculates precision, recall and fbeta.
+Calculates precision, recall and fbeta for metrics.
 
 ## Ethical Considerations
 
