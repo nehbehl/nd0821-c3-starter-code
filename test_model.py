@@ -10,17 +10,18 @@ sys.path.insert(0, cwd)
 
 # Add the necessary imports for the starter code.
 import starter
-import ml
+import starter.starter
+import starter.starter.ml
 import pandas as pd
-from ml.data import process_data
-from ml.model import train_model, compute_model_metrics, inference
+from starter.starter.ml.data import process_data
+from starter.starter.ml.model import train_model, compute_model_metrics, inference
 import numpy as np
 import math
 import pytest
 
 
 # Add code to load in the data.
-data = pd.read_csv('../clean_census.csv')
+data = pd.read_csv('./starter/starter/clean_census.csv')
 
 
 # Optional enhancement, use K-fold cross validation instead of a train-test split.
