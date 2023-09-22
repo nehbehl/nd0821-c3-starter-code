@@ -23,8 +23,11 @@ It has been cleaned for invalid records.
 This has been performed with the Census Income Data Set.
 
 ## Metrics
-Calculates precision, recall and fbeta for metrics.
+Calculates precision, recall and fbeta - 0.6510791366906474 0.5782747603833865 0.6125211505922166
+
 
 ## Ethical Considerations
+This model is not ideal for a real business use case and should be checked for bias.
 
 ## Caveats and Recommendations
+This model has not been checked for bias so not recommended for production directly.
