@@ -20,14 +20,14 @@ This model is trained on US Census Income Data Set from https://archive.ics.uci.
 It has been cleaned for invalid records.
 
 ## Evaluation Data
-This has been performed with the Census Income Data Set.
+This has been performed with the Census Income Data Set. 20 %  data was used for evaluation.
 
 ## Metrics
 Calculates precision, recall and fbeta - 0.6510791366906474 0.5782747603833865 0.6125211505922166
 
 
 ## Ethical Considerations
-This model is not ideal for a real business use case and should be checked for bias.
+This model is not ideal for a real business use case and should be checked for bias. I observed that using race might cause model drift.
 
 ## Caveats and Recommendations
 This model has not been checked for bias so not recommended for production directly.
