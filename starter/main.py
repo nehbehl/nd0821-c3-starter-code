@@ -1,31 +1,74 @@
+from fastapi import FastAPI
 from typing import Union, List
-from fastapi import FastAPI, HTTPException
-
 from pydantic import BaseModel
 
-
 class Data(BaseModel):
-    feature_1: float
-    feature_2: str
-
+    age: int
+    workclass: str 
+    education: str
+    marital_status: str
+    occupation: str
+    relationship: str
+    race: str
+    sex: str
+    hours_per_week: int
+    native_country: str
 
 app = FastAPI(
-    title="Exercise API",
-    description="An API that demonstrates checking the values of your inputs.",
+    title="Fast API for ML devops project 3",
+    description="An API that implements model inference.",
     version="1.0.0",
 )
 
 @app.get("/")
 async def say_hello():
-    return {"Udacity Machine Learning Devops"}
+    return {"Hello to Udacity Machine Learning Devops ND"}
 
 @app.post("/data/")
 async def ingest_data(data: Data):
-    if data.feature_1 < 0:
-        raise HTTPException(status_code=400, detail="feature_1 needs to be above 0.")
-    if len(data.feature_2) > 280:
-        raise HTTPException(
-            status_code=400,
-            detail=f"feature_2 needs to be less than 281 characters. It has {len(data.feature_2)}.",
-        )
-    return data
+        data = {  'age': inference.age,
+                'workclass': inference.workclass, 
+                'education': inference.education,
+                'marital-status': inference.marital_status,
+                'occupation': inference.occupation,
+                'relationship': inference.relationship,
+                'race': inference.race,
+                'sex': inference.sex,
+                'hours-per-week': inference.hours_per_week,
+                'native-country': inference.native_country,
+                }
+
+        testdf = pd.DataFrame(data, index=[0])
+
+        # apply transformation to sample data
+        cat_features = [
+                    "workclass",
+                    "education",
+                    "marital-status",
+                    "occupation",
+                    "relationship",
+                    "race",
+                    "sex",
+                    "native-country",
+                    ]
+
+        model=model.pkl
+        testdf,_,_,_ = process_data(
+                                testdf, 
+                                categorical_features=cat_features, 
+                                training=False, 
+                                encoder=encoder, 
+                                lb=lb
+                                )
+
+        prediction = model.predict(testdf)
+
+        if prediction[0]>0.5:
+            prediction = '>50K'
+        else:
+            prediction = '<=50K', 
+            data['prediction'] = prediction
+
+
+
+        return data
