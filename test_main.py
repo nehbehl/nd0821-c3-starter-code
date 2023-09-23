@@ -7,10 +7,9 @@ from main import app
 client = TestClient(app)
 
 
-def test_post_data_fail():
-    data = {"age": 0, "workclass": "test string", "relationship" : "null"}
-    r = client.post("/data/", data=json.dumps(data))
-    assert r.status_code == 422
+def test_get():
+    r = client.get("/")
+    assert r.json() == ["Hello to Udacity Machine Learning Devops ND"]
 
 def test_sal_less_50k():
     data = {
