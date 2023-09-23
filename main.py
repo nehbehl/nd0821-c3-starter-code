@@ -5,8 +5,9 @@ from pydantic import BaseModel
 
 
 class Data(BaseModel):
-    feature_1: float
-    feature_2: str
+    age: int
+    workclass: str
+    relationship: str
 
 
 app = FastAPI(
@@ -17,15 +18,11 @@ app = FastAPI(
 
 @app.get("/")
 async def say_hello():
-    return {"Udacity Machine Learning Devops"}
+    return {"Hello to Udacity Machine Learning Devops ND"}
 
 @app.post("/data/")
 async def ingest_data(data: Data):
-    if data.feature_1 < 0:
-        raise HTTPException(status_code=400, detail="feature_1 needs to be above 0.")
-    if len(data.feature_2) > 280:
-        raise HTTPException(
-            status_code=400,
-            detail=f"feature_2 needs to be less than 281 characters. It has {len(data.feature_2)}.",
-        )
+    if data.age == 0:
+        raise HTTPException(status_code=400, detail="age needs to be above 0.")
+
     return data
