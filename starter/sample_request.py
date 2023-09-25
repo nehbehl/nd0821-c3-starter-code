@@ -22,7 +22,7 @@ print("\n")
 
 print(data)
 print("\n")
-r = requests.post("https://mldevops-project3.onrender.com/", data = json.dumps(data))
+r = requests.post("https://mldevops-project3.onrender.com/predict", data = json.dumps(data))
 
 print("prediction")
 print(r.json())
