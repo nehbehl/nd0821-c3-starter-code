@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import sys
 from pathlib import Path
+import pickle
 
 cwd = str(Path(__file__).resolve().parents[1])
 sys.path.insert(0, cwd)
@@ -48,13 +49,26 @@ X_test, y_test, encoder_t, lb_t = process_data(
 
 # Train and save a model.
 model = train_model(X_train, y_train)
-predictions = inference(model, X_test)
+with open('model.pkl', 'wb') as file:
+    pickle.dump(model, file)
 
+predictions = inference(model, X_test)
+print(predictions)
 precision, recall, fbeta = compute_model_metrics(y_test, predictions)
 
 print(precision,recall,fbeta)
 
 ## Unit tests 
+
+def test_loaded_data():
+    assert isinstance(data, pd.DataFrame)
+
+def test_X():
+    assert isinstance(X_train, np.ndarray)
+
+def test_y():
+    assert isinstance(y_train, np.ndarray)
+
 def test_train_model():
     assert isinstance(model, RandomForestClassifier)
     print("Passed train model check")
@@ -71,7 +85,3 @@ print("Running unit tests")
 test_train_model()
 test_inference()
 test_metrics()
-
-
-
-
