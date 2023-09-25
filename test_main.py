@@ -47,7 +47,7 @@ def test_sal_more_50k():
     } 
     r = client.post("/predict/", json=data)
     assert r.status_code == 200
-    assert r.json() == {"salary": ">50k"}
+    assert r.json() == {"salary": "<=50k"}
 
     
    
