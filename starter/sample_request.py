@@ -16,13 +16,13 @@ data = {
         "native-country": " United-States",
     } 
 
-r = requests.get("http://mldevops-project3.onrender.com/")
+r = requests.get("https://mldevops-project3.onrender.com/")
 print(r.json())
 print("\n")
 
 print(data)
 print("\n")
-r = requests.post("http://mldevops-project3.onrender.com/", data = json.dumps(data))
+r = requests.post("https://mldevops-project3.onrender.com/", data = json.dumps(data))
 
 print("prediction")
 print(r.json())
