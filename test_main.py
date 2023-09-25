@@ -32,22 +32,21 @@ def test_sal_less_50k():
 
 def test_sal_more_50k():
     data = {
-        "sno": 341,
-        "age": 38,
-        "workclass": "Private",
-        "education": "Assoc-voc",
-        "education-num": 9,
-        "marital-status": "Married-civ-spouse",
-        "occupation": "Craft-repair",
-        "relationship": "Husband",
-        "race": " White",
-        "sex": "Male",
-        "hours-per-week": "40",
-        "native-country": " United-States"
-    } 
+    "sno":1,
+    "age": 27, 
+    "workclass": "Private", 
+    "education": "Bachelors", 
+    "marital-status": "Divorced", 
+    "occupation": "Adm-clerical", 
+    "relationship": "Not-in-family", 
+    "race": "White", 
+    "sex": "Female", 
+    "hours-per-week": 48, 
+    "native-country": "United-States"
+    }
     r = client.post("/predict/", json=data)
     assert r.status_code == 200
-    assert r.json() == {"salary": "<=50k"}
+    assert r.json() == {"salary": ">50k"}
 
     
    
