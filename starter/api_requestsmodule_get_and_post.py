@@ -2,6 +2,7 @@ import requests
 import json
 
 data = {
+        "sno": 1,
         "age": 34,
         "workclass": "Private",
         "education": "Bachelors",
@@ -15,7 +16,13 @@ data = {
         "native-country": " United-States",
     } 
 
+r = requests.get("http://127.0.0.1:8000/")
+print(r.json())
+print("\n")
+
+print(data)
+print("\n")
 r = requests.post("http://127.0.0.1:8000/predict/", data = json.dumps(data))
 
+print("prediction")
 print(r.json())
-
